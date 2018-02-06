@@ -2,6 +2,11 @@ package com.huangyu;
 
 import com.huangyu.bean.TreeNode;
 
+/**
+ * 104. Maximum Depth of Binary Tree
+ * @author huangyu
+ *
+ */
 public class MaximumDepthOfBinaryTree {
 
 	public int maxDepth(TreeNode root) {
