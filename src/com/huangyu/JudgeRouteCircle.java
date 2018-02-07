@@ -11,7 +11,7 @@ public class JudgeRouteCircle {
 	public boolean judgeCircle(String moves) {
 		int[] positions = new int[2];
 		positions[0] = 0;
-		positions[1] = 1;
+		positions[1] = 0;
 		for (char move : moves.toCharArray()) {
 			switch (move) {
 			case 'L':
@@ -24,12 +24,12 @@ public class JudgeRouteCircle {
 				positions[1]++;
 				break;
 			case 'D':
-				positions[0]--;
+				positions[1]--;
 				break;
 			}
 		}
 
-		if (positions[0] == 0 && positions[1] == 1) {
+		if (positions[0] == 0 && positions[1] == 0) {
 			return true;
 		} else {
 			return false;
