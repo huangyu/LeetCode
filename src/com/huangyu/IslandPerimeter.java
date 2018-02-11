@@ -16,7 +16,7 @@ public class IslandPerimeter {
 		int row = grid.length;
 		int column = grid[0].length;
 		for (int i = 0; i < row; i++) {
-			for (int j = 0; i < column; j++) {
+			for (int j = 0; j < column; j++) {
 				if (grid[i][j] == 1) {
 					return getPerimeter(grid, i, j);
 				}
