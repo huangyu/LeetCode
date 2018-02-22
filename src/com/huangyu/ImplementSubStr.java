@@ -43,7 +43,7 @@ public class ImplementSubStr {
 	}
 
 	/**
-	 * KPM法
+	 * KMP法
 	 * 
 	 * @param haystack
 	 *            主串
@@ -76,6 +76,13 @@ public class ImplementSubStr {
 		}
 	}
 
+	/**
+	 * 求解next数组
+	 * next数组其实就是查找needle中每一位前面的子串的前后缀有多少位匹配，从而决定j失配时应该回退到哪个位置
+	 * 
+	 * @param needle 模式串
+	 * @return
+	 */
 	public static int[] getNext(String needle) {
 		char[] p = needle.toCharArray();
 		int[] next = new int[p.length];
