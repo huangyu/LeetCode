@@ -12,42 +12,39 @@ import java.util.List;
  */
 public class FourSum {
 
-	public static void main(String[] args) {
-		System.out.println(fourSum(new int[] { 1, 0, -1, 0, -2, 2 }, 0));
-	}
-
-	public static List<List<Integer>> fourSum(int[] nums, int target) {
+	public List<List<Integer>> fourSum(int[] nums, int target) {
 		Arrays.sort(nums);
 		return kSum(nums, 0, 4, target);
 	}
 
-	public static List<List<Integer>> kSum(int[] nums, int start, int k, int target) {
+	public List<List<Integer>> kSum(int[] nums, int start, int k, int target) {
 		List<List<Integer>> result = new ArrayList<>();
-		// 解2Sum问题
 		if (k == 2) {
-			result.addAll(twoSum(nums, target));
+			result.addAll(twoSum(nums, start, target));
 		} else {
 			for (int i = start; i < nums.length - (k - 1); i++) {
 				if (i > start && nums[i] == nums[i - 1]) {
 					continue;
 				}
-				// 将kSum问题转化为k-1Sum问题直至2Sum
-				List<List<Integer>> kSumResult = kSum(nums, i + 1, k - 1, target - nums[i]);
-				for (List<Integer> list : kSumResult) {
-					list.add(0, nums[i]);
+				List<List<Integer>> temp = kSum(nums, i + 1, k - 1, target - nums[i]);
+				for (List<Integer> t : temp) {
+					t.add(0, nums[i]);
 				}
-				result.addAll(kSumResult);
+				result.addAll(temp);
 			}
 		}
 		return result;
 	}
 
-	public static List<List<Integer>> twoSum(int[] nums, int target) {
-		List<List<Integer>> result = new ArrayList<>();
-		int left = 0, right = nums.length - 1;
+	public List<List<Integer>> twoSum(int[] nums, int start, int target) {
+		List<List<Integer>> list = new ArrayList<>();
+		int left = start, right = nums.length - 1;
 		while (left < right) {
 			if (nums[left] + nums[right] == target) {
-				result.add(Arrays.asList(nums[left], nums[right]));
+				List<Integer> path = new ArrayList<>();
+				path.add(nums[left]);
+				path.add(nums[right]);
+				list.add(path);
 				left++;
 				right--;
 				while (left < right && nums[left] == nums[left - 1]) {
@@ -62,7 +59,7 @@ public class FourSum {
 				left++;
 			}
 		}
-		return result;
+		return list;
 	}
 
 }
