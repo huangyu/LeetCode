@@ -2,6 +2,11 @@ package com.huangyu;
 
 import com.huangyu.bean.ListNode;
 
+/**
+ * 23. Merge k Sorted Lists
+ * @author huangyu
+ *
+ */
 public class MergeKSortedLists {
 
 	public ListNode mergeKLists(ListNode[] lists) {
